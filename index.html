@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nallun Tattoo & Art | Luiza Watanabe</title>
-    <meta name="description" content="Tatuagens autorais e artes exclusivas por Luiza Watanabe (Nallun) em Mogi das Cruzes - SP.">
+    <title>Duas Rodas Delivery | Logística e Segurança</title>
+    <meta name="description" content="Coleta e entrega com garantia total. Se chamou a Duas Rodas, sua encomenda chega ao destino com segurança.">
     
-    <!-- Google Fonts para um visual artístico e sofisticado -->
+    <!-- Google Fonts: Montserrat para impacto corporativo, Inter para leitura -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Ícones -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <style>
-        /* Variáveis de Tema - Estilo Tattoo Premium (Dark) */
+        /* Design System - Preto, Vermelho, Tecnologia e Tradição */
         :root {
-            --bg-main: #0a0a0a;
-            --bg-secondary: #121212;
-            --bg-card: #1a1a1a;
-            --accent: #d4af37; /* Dourado suave para dar um ar premium */
-            --accent-hover: #b5952f;
-            --text-light: #f5f5f5;
-            --text-muted: #a0a0a0;
-            --border-color: #333333;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary-red: #D90429;
+            --primary-hover: #EF233C;
+            --bg-black: #050505;
+            --bg-surface: #121212;
+            --bg-card: #1A1A1A;
+            --text-light: #F8F9FA;
+            --text-muted: #ADB5BD;
+            --border-color: #2B2B2B;
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -34,21 +34,19 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-main);
+            background-color: var(--bg-black);
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Tipografia Artística para Títulos */
         h1, h2, h3, h4, .brand-font {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
         }
 
         a { text-decoration: none; color: inherit; }
@@ -61,6 +59,7 @@
 
         .section-padding { padding: 100px 0; }
         .text-center { text-align: center; }
+        .text-red { color: var(--primary-red); }
 
         /* Botões */
         .btn {
@@ -68,200 +67,240 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 16px 35px;
-            background-color: transparent;
-            color: var(--text-light);
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
+            padding: 16px 32px;
+            background-color: var(--primary-red);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            border: 1px solid var(--accent);
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background-color: var(--accent);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .btn:hover::before { width: 100%; }
-        .btn:hover { color: var(--bg-main); font-weight: 600; border-color: var(--accent); }
-
-        .btn-solid {
-            background-color: var(--accent);
-            color: var(--bg-main);
-            font-weight: 600;
-        }
-        .btn-solid:hover {
-            background-color: var(--accent-hover);
+        .btn:hover {
+            background-color: var(--primary-hover);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 20px rgba(217, 4, 41, 0.3);
         }
 
-        /* Navbar */
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-red);
+            color: #fff;
+        }
+
+        /* Header Corporativo */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 0;
-            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+            background-color: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             transition: var(--transition);
-        }
-
-        header.scrolled {
-            background-color: rgba(10, 10, 10, 0.98);
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-color);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 90px;
         }
 
         .logo {
-            font-family: 'Cormorant Garamond', serif;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-main {
+            font-family: 'Montserrat', sans-serif;
             font-size: 2rem;
+            font-weight: 900;
+            font-style: italic;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .logo-sub {
+            font-size: 0.85rem;
             font-weight: 700;
-            color: var(--text-light);
-            letter-spacing: 2px;
+            color: var(--primary-red);
+            letter-spacing: 5px;
             text-transform: uppercase;
         }
-        
-        .logo span { color: var(--accent); font-style: italic; font-weight: 400; text-transform: lowercase; font-size: 1.5rem; }
 
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
         .nav-links a {
-            font-size: 0.85rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
+            letter-spacing: 0.5px;
             transition: var(--transition);
         }
 
-        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover { color: var(--primary-red); }
 
-        /* Hero Section */
+        /* Hero Section (Foco em Conversão e Promessa Forte) */
         .hero {
-            height: 100vh;
-            min-height: 700px;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            background: linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1617347454431-f49d7ff5c3b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             position: relative;
-            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)), 
-                        url('https://placehold.co/1920x1080/0a0a0a/d4af37?text=Foto+de+Fundo+do+Estudio') center/cover;
+            padding-top: 90px;
         }
 
         .hero-content {
-            max-width: 800px;
-            padding: 0 20px;
+            max-width: 750px;
+            position: relative;
             z-index: 2;
         }
 
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            line-height: 1;
-            margin-bottom: 20px;
-            font-weight: 600;
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(217, 4, 41, 0.1);
+            color: var(--primary-red);
+            padding: 8px 16px;
+            border: 1px solid var(--primary-red);
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
         }
 
-        .hero h1 i { color: var(--accent); }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
             margin-bottom: 40px;
-            font-weight: 300;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        /* Portfolio / Trabalhos */
-        .portfolio {
-            background-color: var(--bg-main);
+        /* Diferencial / Garantia (Seção Crucial) */
+        .guarantee-bar {
+            background-color: var(--primary-red);
+            padding: 40px 0;
+            border-top: 4px solid #fff;
         }
 
-        .section-header { margin-bottom: 60px; }
-        .section-header h2 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
-        .section-header p {
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-        }
-
-        .gallery-grid {
+        .guarantee-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
         }
 
-        .gallery-item {
+        .guarantee-item {
+            color: #fff;
+        }
+
+        .guarantee-item i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .guarantee-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .guarantee-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Especialidades (O que levamos e o que não levamos) */
+        .specialties {
+            background-color: var(--bg-surface);
             position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            aspect-ratio: 4/5;
-            cursor: pointer;
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-            filter: grayscale(20%);
+        .section-header {
+            margin-bottom: 60px;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
-            filter: grayscale(0%);
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
         }
 
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 30px 20px 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            opacity: 0;
-            transform: translateY(20px);
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .spec-card {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
             transition: var(--transition);
+        }
+
+        .spec-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        .spec-card h3 {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-            transform: translateY(0);
+        .spec-card ul {
+            list-style: none;
         }
 
-        .gallery-overlay h3 { font-size: 1.5rem; }
-        .gallery-overlay i { font-size: 1.5rem; color: var(--accent); }
+        .spec-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
 
-        /* Sobre a Artista */
+        .spec-card ul li i.bx-check { color: #25D366; font-size: 1.5rem; }
+        .spec-card ul li i.bx-x { color: var(--primary-red); font-size: 1.5rem; }
+
+        /* Sobre Nós */
         .about {
-            background-color: var(--bg-secondary);
+            background-color: var(--bg-black);
+            border-top: 1px solid var(--border-color);
         }
 
         .about-grid {
@@ -271,115 +310,67 @@
             align-items: center;
         }
 
-        .about-image {
-            position: relative;
-        }
-
         .about-image img {
             width: 100%;
-            border-radius: 4px;
-            filter: contrast(110%);
-        }
-
-        .about-image::after {
-            content: '';
-            position: absolute;
-            top: 20px; left: -20px;
-            width: 100%; height: 100%;
-            border: 1px solid var(--accent);
-            z-index: -1;
-            border-radius: 4px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-red);
+            filter: grayscale(20%);
         }
 
         .about-text h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-
-        .about-text h3 {
-            font-size: 1.2rem;
-            color: var(--accent);
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
         }
 
         .about-text p {
             color: var(--text-muted);
             margin-bottom: 20px;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             text-align: justify;
         }
 
-        .signature {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: var(--text-light);
-            font-style: italic;
+        .highlight-box {
+            background-color: rgba(217, 4, 41, 0.05);
+            border-left: 4px solid var(--primary-red);
+            padding: 20px;
             margin-top: 30px;
-            opacity: 0.8;
         }
 
-        /* Depoimentos / Prova Social */
-        .testimonials {
-            background-color: var(--bg-main);
-            background-image: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
-        }
-
-        .testi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .testi-card {
-            background-color: var(--bg-card);
-            padding: 40px;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        .quote-icon {
-            font-size: 4rem;
-            color: var(--accent);
-            opacity: 0.1;
-            position: absolute;
-            top: 20px; right: 20px;
-            font-family: serif;
-            line-height: 1;
-        }
-
-        .testi-card p {
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 1;
-            font-size: 1.05rem;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-        }
-
-        .client-name {
+        .highlight-box p {
+            color: #fff;
+            margin: 0;
             font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-style: italic;
         }
 
-        /* Contato & Localização */
+        /* Trabalhe Conosco (Para Motoboys) */
+        .work-with-us {
+            background: linear-gradient(rgba(5,5,5,0.85), rgba(5,5,5,0.95)), url('https://images.unsplash.com/photo-1558981420-c532902e58b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 100px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .work-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .work-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .work-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Contato / Formulário */
         .contact {
-            background-color: var(--bg-secondary);
+            background-color: var(--bg-surface);
         }
 
         .contact-grid {
@@ -388,10 +379,8 @@
             gap: 60px;
         }
 
-        .contact-info { padding-right: 20px; }
-
         .contact-info h2 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
@@ -401,127 +390,150 @@
             font-size: 1.1rem;
         }
 
-        .info-item {
+        .contact-methods {
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .method-item {
+            display: flex;
+            align-items: center;
             gap: 20px;
-            margin-bottom: 30px;
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
 
-        .info-item i {
-            font-size: 2rem;
-            color: var(--accent);
+        .method-item i {
+            font-size: 2.5rem;
+            color: var(--primary-red);
         }
-
-        .info-item h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .info-item span { color: var(--text-muted); }
 
         .contact-form {
-            background-color: var(--bg-main);
+            background-color: var(--bg-card);
             padding: 40px;
-            border-radius: 4px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
         }
 
-        .form-group { margin-bottom: 20px; }
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-        .form-group input, .form-group textarea {
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 15px;
-            background-color: var(--bg-card);
+            background-color: var(--bg-black);
             border: 1px solid var(--border-color);
-            color: var(--text-light);
+            color: #fff;
+            border-radius: 4px;
             font-family: 'Inter', sans-serif;
             outline: none;
             transition: var(--transition);
         }
 
-        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
 
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--accent);
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary-red);
         }
 
         /* Footer */
         footer {
-            background-color: #050505;
+            background-color: var(--bg-black);
             padding: 40px 0;
             text-align: center;
             border-top: 1px solid var(--border-color);
         }
 
-        footer .logo { font-size: 1.5rem; margin-bottom: 10px; display: block; }
-        footer p { color: var(--text-muted); font-size: 0.85rem; }
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
 
-        /* Botão Flutuante do WhatsApp */
+        /* Botão Flutuante */
         .wa-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background-color: #25D366;
             color: #fff;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
             box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             transition: var(--transition);
         }
 
         .wa-float:hover {
-            transform: scale(1.1) rotate(-10deg);
+            transform: scale(1.1);
             background-color: #1EBE5D;
         }
 
-        /* Animações Reveal */
+        /* Animações Scroll */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Responsividade */
         @media (max-width: 992px) {
-            .about-grid, .contact-grid { grid-template-columns: 1fr; }
-            .about-image { order: -1; margin-bottom: 40px; }
-            .about-image::after { display: none; }
-            .hero h1 { font-size: 3.5rem; }
+            .guarantee-grid { grid-template-columns: 1fr; }
+            .spec-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .about-image { margin-bottom: 30px; }
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* Menu Hamburguer viria aqui */
-            .btn { width: 100%; margin-bottom: 10px; }
+            .nav-links { display: none; } /* Menu hamburguer iria aqui */
+            .hero { text-align: center; padding-top: 120px; }
+            .hero-content { margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+            .hero h1 { font-size: 2.2rem; }
             .contact-form { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header Corporativo -->
     <header id="header">
         <div class="container nav-container">
-            <a href="#" class="logo">Nallun <span>Tattoo</span></a>
+            <a href="#" class="logo">
+                <span class="logo-main">DUAS RODAS</span>
+                <span class="logo-sub">Delivery</span>
+            </a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="#inicio">Início</a></li>
-                    <li><a href="#portfolio">Portfólio</a></li>
-                    <li><a href="#sobre">A Artista</a></li>
-                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#diferencial">Garantia</a></li>
+                    <li><a href="#sobre">A Empresa</a></li>
+                    <li><a href="#trabalhe">Seja Parceiro</a></li>
                 </ul>
             </nav>
-            <a href="#contato" class="btn" style="padding: 10px 20px; font-size: 0.75rem; display: none; /* Escondido em mobile, visível via flex no desktop idealmente */">Orçamento</a>
+            <a href="#contato" class="btn" style="padding: 12px 24px; font-size: 0.8rem;">Fazer Cotação</a>
         </div>
     </header>
 
@@ -529,180 +541,162 @@
     <section id="inicio" class="hero">
         <div class="container">
             <div class="hero-content reveal">
-                <h1>A Arte Que Marca a <i>Sua História</i></h1>
-                <p>Muito mais do que tinta na pele. Tatuagens autorais, traços precisos e um olhar artístico exclusivo, direto de Mogi das Cruzes - SP.</p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <!-- DDD 11 (Mogi das Cruzes) -->
-                    <a href="https://wa.me/5511999999999?text=Olá%20Nallun,%20gostaria%20de%20fazer%20um%20orçamento%20de%20tatuagem!" target="_blank" class="btn btn-solid">Agendar Sessão</a>
-                    <a href="#portfolio" class="btn">Ver Portfólio</a>
+                <div class="security-badge">
+                    <i class='bx bx-check-shield'></i> GARANTIA INCONDICIONAL DE ENTREGA
+                </div>
+                <h1>Se chamou a <span class="text-red">Duas Rodas</span>, sua encomenda chega ao destino.</h1>
+                <p>Logística expressa com segurança absoluta. Nós não apenas transportamos sua mercadoria, nós assumimos o risco por ela.</p>
+                
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <!-- Substituir o número -->
+                    <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20fazer%20uma%20cotação%20de%20entrega!" target="_blank" class="btn">
+                        <i class='bx bxl-whatsapp' style="font-size: 1.5rem;"></i> Chamar no WhatsApp
+                    </a>
+                    <a href="#contato" class="btn btn-outline">Cotação via E-mail</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trabalhos / Portfolio -->
-    <section id="portfolio" class="portfolio section-padding">
+    <!-- O Diferencial Forte (A Promessa) -->
+    <section id="diferencial" class="guarantee-bar">
+        <div class="container guarantee-grid reveal">
+            <div class="guarantee-item">
+                <i class='bx bx-package'></i>
+                <h3>Risco Zero</h3>
+                <p>Se danificarmos o produto por erro nosso, nós pagamos integralmente o valor.</p>
+            </div>
+            <div class="guarantee-item">
+                <i class='bx bx-radar'></i>
+                <h3>Garantia de Perda</h3>
+                <p>Em caso de perda ou extravio sob nossa responsabilidade, o ressarcimento é garantido.</p>
+            </div>
+            <div class="guarantee-item">
+                <i class='bx bx-stopwatch'></i>
+                <h3>Confiança Absoluta</h3>
+                <p>Agilidade e pontualidade. Tratamos a sua encomenda como se fosse nossa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Especialidades (Filtro de Público) -->
+    <section class="specialties section-padding">
         <div class="container">
             <div class="section-header text-center reveal">
-                <p>Nossas Telas Humanas</p>
-                <h2>Últimos Trabalhos</h2>
+                <h2>Nosso Foco de <span class="text-red">Atuação</span></h2>
+                <p>Especializados na logística B2B e E-commerce. Veja o que transportamos.</p>
             </div>
-            
-            <div class="gallery-grid">
-                <!-- Imagens Placeholder (Luiza vai substituir pelas fotos das tattoos dela) -->
-                <div class="gallery-item reveal">
-                    <img src="https://placehold.co/600x800/1a1a1a/d4af37?text=Arte+Floral" alt="Tatuagem Autoral 1">
-                    <div class="gallery-overlay">
-                        <h3>Arte Floral</h3>
-                        <i class='bx bx-zoom-in'></i>
-                    </div>
+
+            <div class="spec-grid">
+                <!-- O que fazemos -->
+                <div class="spec-card reveal">
+                    <h3><i class='bx bx-check-circle' style="color: #25D366;"></i> O que Entregamos</h3>
+                    <ul>
+                        <li><i class='bx bx-check'></i> Produtos de E-commerce e Lojas Virtuais</li>
+                        <li><i class='bx bx-check'></i> Documentos e Malotes Corporativos</li>
+                        <li><i class='bx bx-check'></i> Autopeças e Equipamentos Eletrônicos</li>
+                        <li><i class='bx bx-check'></i> Alimentos Congelados (Embalagem adequada)</li>
+                        <li><i class='bx bx-check'></i> Encomendas em Geral (Caixas, sacolas)</li>
+                    </ul>
                 </div>
-                <div class="gallery-item reveal" style="transition-delay: 0.1s;">
-                    <img src="https://placehold.co/600x800/1a1a1a/d4af37?text=Fineline" alt="Tatuagem Autoral 2">
-                    <div class="gallery-overlay">
-                        <h3>Fineline</h3>
-                        <i class='bx bx-zoom-in'></i>
-                    </div>
+
+                <!-- O que NÃO fazemos -->
+                <div class="spec-card reveal" style="transition-delay: 0.2s;">
+                    <h3><i class='bx bx-x-circle' style="color: var(--primary-red);"></i> O que NÃO Entregamos</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">Para mantermos nosso padrão de excelência e higiene nos baús, restringimos alguns itens:</p>
+                    <ul>
+                        <li><i class='bx bx-x'></i> Refeições Quentes (Marmitas, Lanches)</li>
+                        <li><i class='bx bx-x'></i> Confeitaria (Bolos decorados, Doces frágeis)</li>
+                        <li><i class='bx bx-x'></i> Produtos inflamáveis ou perigosos</li>
+                    </ul>
                 </div>
-                <div class="gallery-item reveal" style="transition-delay: 0.2s;">
-                    <img src="https://placehold.co/600x800/1a1a1a/d4af37?text=Realismo" alt="Tatuagem Autoral 3">
-                    <div class="gallery-overlay">
-                        <h3>Realismo</h3>
-                        <i class='bx bx-zoom-in'></i>
-                    </div>
-                </div>
-                <div class="gallery-item reveal">
-                    <img src="https://placehold.co/600x800/1a1a1a/d4af37?text=Geometria" alt="Tatuagem Autoral 4">
-                    <div class="gallery-overlay">
-                        <h3>Geometria</h3>
-                        <i class='bx bx-zoom-in'></i>
-                    </div>
-                </div>
-                <div class="gallery-item reveal" style="transition-delay: 0.1s;">
-                    <img src="https://placehold.co/600x800/1a1a1a/d4af37?text=Blackwork" alt="Tatuagem Autoral 5">
-                    <div class="gallery-overlay">
-                        <h3>Blackwork</h3>
-                        <i class='bx bx-zoom-in'></i>
-                    </div>
-                </div>
-                <div class="gallery-item reveal" style="transition-delay: 0.2s;">
-                    <img src="https://placehold.co/600x800/1a1a1a/d4af37?text=Cobertura" alt="Tatuagem Autoral 6">
-                    <div class="gallery-overlay">
-                        <h3>Cobertura</h3>
-                        <i class='bx bx-zoom-in'></i>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center" style="margin-top: 50px;">
-                <a href="https://instagram.com/seu_instagram" target="_blank" class="btn">Siga no Instagram para ver mais</a>
             </div>
         </div>
     </section>
 
-    <!-- Sobre a Artista -->
+    <!-- Sobre Nós -->
     <section id="sobre" class="about section-padding">
         <div class="container about-grid">
             <div class="about-image reveal">
-                <!-- Placeholder para a foto da Luiza -->
-                <img src="https://placehold.co/800x1000/1a1a1a/d4af37?text=Foto+da+Luiza+(Nallun)" alt="Luiza Watanabe - Nallun Tattoo">
+                <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Frota Duas Rodas Delivery">
             </div>
             <div class="about-text reveal">
-                <h2>Luiza Watanabe</h2>
-                <h3>Conhecida como Nallun</h3>
-                <p>Sou apaixonada por transformar sentimentos, ideias e memórias em obras de arte eternas. Localizada no coração de Mogi das Cruzes - SP, meu estúdio foi criado para ser um espaço seguro, acolhedor e livre de julgamentos.</p>
-                <p>Acredito que a tatuagem é um rito de passagem e uma forma poderosa de autoexpressão. Minha especialidade é criar desenhos autorais, ouvindo cada detalhe do que você deseja, garantindo uma arte exclusiva que você terá orgulho de carregar na pele.</p>
-                <p>Com traços precisos e muita atenção à biossegurança, priorizo não apenas a estética da tatuagem, mas a sua saúde e o seu bem-estar durante toda a sessão.</p>
+                <h2>Compromisso <span class="text-red">Inabalável</span></h2>
+                <p>No mercado de entregas, o maior medo de qualquer empresário é a dor de cabeça com clientes reclamando de pedidos atrasados ou danificados. A <strong>Duas Rodas Delivery</strong> nasceu para exterminar esse problema.</p>
+                <p>Nossa filosofia é simples: a satisfação do seu cliente final é a nossa prioridade. Criamos um ecossistema de entregas baseado em confiança e tecnologia, onde os nossos motoboys são treinados para representar a sua marca com o maior nível de profissionalismo.</p>
                 
-                <div class="signature">Nallun</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Depoimentos -->
-    <section id="depoimentos" class="testimonials section-padding">
-        <div class="container">
-            <div class="section-header text-center reveal">
-                <p>A experiência</p>
-                <h2>O Que Dizem Meus Clientes</h2>
-            </div>
-
-            <div class="testi-grid">
-                <div class="testi-card reveal">
-                    <span class="quote-icon">"</span>
-                    <p>A Nallun tem uma mão super leve! Fiz minha primeira tatuagem com ela e estava morrendo de medo, mas ela me acalmou e o resultado ficou infinitamente melhor do que a referência que eu levei.</p>
-                    <div class="client-info">
-                        <div class="client-name">Camila Silva</div>
-                    </div>
-                </div>
-                
-                <div class="testi-card reveal" style="transition-delay: 0.1s;">
-                    <span class="quote-icon">"</span>
-                    <p>A arte exclusiva que ela criou baseada na história da minha família me fez chorar. O estúdio em Mogi é super limpo, agradável e a energia dela é maravilhosa. Recomendo de olhos fechados!</p>
-                    <div class="client-info">
-                        <div class="client-name">Rafael Costa</div>
-                    </div>
-                </div>
-
-                <div class="testi-card reveal" style="transition-delay: 0.2s;">
-                    <span class="quote-icon">"</span>
-                    <p>Profissional excelente! Traços finos e perfeitos. A cicatrização foi super tranquila e ela acompanhou tudo pelo WhatsApp nos dias seguintes. Já estou marcando a próxima.</p>
-                    <div class="client-info">
-                        <div class="client-name">Amanda Oliveira</div>
-                    </div>
+                <div class="highlight-box">
+                    <p>"Não terceirize os seus problemas. Terceirize as suas entregas para uma empresa que assume a responsabilidade junto com você."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contato e Orçamento -->
+    <!-- Trabalhe Conosco (Captação de Motoboys) -->
+    <section id="trabalhe" class="work-with-us reveal">
+        <div class="container work-content">
+            <h2>Faça parte da nossa <span class="text-red">Frota</span></h2>
+            <p>Se você é um profissional responsável, tem moto própria e busca uma parceria sólida, rentável e com muito volume de entregas, a Duas Rodas é o seu lugar.</p>
+            <!-- Link específico para RH/Cadastro -->
+            <a href="https://wa.me/5500000000000?text=Olá,%20quero%20ser%20um%20motoboy%20parceiro%20da%20Duas%20Rodas!" target="_blank" class="btn btn-outline" style="background-color: rgba(0,0,0,0.5); border-color: #fff; color: #fff;">
+                <i class='bx bx-id-card'></i> Quero ser um Entregador Parceiro
+            </a>
+        </div>
+    </section>
+
+    <!-- Contato e Formulário para Empresas -->
     <section id="contato" class="contact section-padding">
         <div class="container contact-grid">
             <div class="contact-info reveal">
-                <h2>Vamos criar a sua arte?</h2>
-                <p>Preencha o formulário para me contar a sua ideia, ou me chame diretamente no WhatsApp. Todo orçamento é feito sob medida.</p>
+                <h2>Pronto para <span class="text-red">Evoluir</span> a sua Logística?</h2>
+                <p>Preencha o formulário para receber uma cotação comercial, ou ligue diretamente para a nossa central de coletas urgentes.</p>
 
-                <div class="info-item">
-                    <i class='bx bxl-whatsapp'></i>
-                    <div>
-                        <h4>WhatsApp</h4>
-                        <span>(11) 99999-9999</span>
+                <div class="contact-methods">
+                    <div class="method-item">
+                        <i class='bx bxl-whatsapp'></i>
+                        <div>
+                            <h4 class="brand-font">Central de Coletas (WhatsApp)</h4>
+                            <span style="color: var(--text-muted); font-size: 1.1rem;">(00) 00000-0000</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="info-item">
-                    <i class='bx bx-map'></i>
-                    <div>
-                        <h4>Localização</h4>
-                        <span>Mogi das Cruzes - SP<br>(Atendimento com hora marcada)</span>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <i class='bx bxl-instagram'></i>
-                    <div>
-                        <h4>Instagram</h4>
-                        <span>@nallun_tattoo</span>
+                    
+                    <div class="method-item">
+                        <i class='bx bx-envelope'></i>
+                        <div>
+                            <h4 class="brand-font">E-mail Comercial</h4>
+                            <span style="color: var(--text-muted); font-size: 1.1rem;">contato@duasrodasdelivery.com.br</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="contact-form reveal" style="transition-delay: 0.2s;">
-                <!-- Conectar com Formspree depois -->
+                <!-- Conectar com Formspree -->
                 <form action="https://formspree.io/f/seu_codigo_aqui" method="POST">
                     <div class="form-group">
-                        <input type="text" name="nome" placeholder="Seu Nome Completo" required>
+                        <label>Sua Empresa / Nome</label>
+                        <input type="text" name="empresa" required placeholder="Ex: Loja de Roupas XYZ">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="telefone" placeholder="Telefone / WhatsApp" required>
+                        <label>WhatsApp ou Telefone</label>
+                        <input type="text" name="telefone" required placeholder="(DDD) 00000-0000">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="local_corpo" placeholder="Qual local do corpo quer tatuar?" required>
+                        <label>Tipo de Carga Padrão</label>
+                        <select name="tipo_carga" required>
+                            <option value="">Selecione o que você mais envia...</option>
+                            <option value="E-commerce">Caixas/Pacotes de E-commerce</option>
+                            <option value="Documentos">Documentos / Contratos</option>
+                            <option value="Autopeças">Autopeças</option>
+                            <option value="Congelados">Alimentos Congelados</option>
+                            <option value="Outros">Outros</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <textarea name="ideia" placeholder="Me conte um pouco sobre a sua ideia. Qual o tamanho aproximado? É colorida ou preto e cinza?" required></textarea>
+                        <label>Volume Estimado e Região</label>
+                        <textarea name="detalhes" required placeholder="Ex: Preciso de 10 entregas diárias saindo do Centro para toda a cidade..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-solid" style="width: 100%;">Solicitar Orçamento</button>
+                    <button type="submit" class="btn" style="width: 100%;">Solicitar Cotação Corporativa</button>
                 </form>
             </div>
         </div>
@@ -711,21 +705,34 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <span class="logo">Nallun <span>Tattoo</span></span>
-            <p>&copy; 2026 Luiza Watanabe. Estúdio de Tatuagem em Mogi das Cruzes. Todos os direitos reservados.</p>
+            <div class="logo" style="align-items: center; margin-bottom: 15px;">
+                <span class="logo-main" style="font-size: 1.5rem;">DUAS RODAS</span>
+                <span class="logo-sub" style="font-size: 0.7rem;">Delivery</span>
+            </div>
+            <p>&copy; 2026 Duas Rodas Delivery. Compromisso e Segurança. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me/5511999999999?text=Olá%20Nallun,%20vim%20pelo%20seu%20site%20e%20quero%20agendar%20uma%20tattoo!" class="wa-float" target="_blank" title="Faça seu orçamento">
+    <!-- Botão WhatsApp Flutuante (Focado em Coletas) -->
+    <a href="https://wa.me/5500000000000?text=Olá,%20acessei%20o%20site%20e%20preciso%20de%20uma%20coleta!" class="wa-float" target="_blank" title="Solicitar Coleta Rápida">
         <i class='bx bxl-whatsapp'></i>
     </a>
 
-    <!-- Scripts de Interatividade -->
+    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Header Scroll
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.8)';
+                } else {
+                    header.style.boxShadow = 'none';
+                }
+            });
+
+            // Scroll Reveal
             const reveals = document.querySelectorAll('.reveal');
-            
             const revealOptions = {
                 threshold: 0.15,
                 rootMargin: "0px 0px -50px 0px"
@@ -741,16 +748,6 @@
 
             reveals.forEach(reveal => {
                 revealOnScroll.observe(reveal);
-            });
-
-            // Efeito Header
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
             });
         });
     </script>
