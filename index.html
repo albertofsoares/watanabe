@@ -3,890 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duas Rodas Delivery | Logística e Segurança</title>
-    <meta name="description" content="Coleta e entrega com garantia total. Se chamou a Duas Rodas, sua encomenda chega ao destino com segurança.">
+    <title>Ghost Web | Sites de Alta Conversão em 48h</title>
     
-    <!-- Favicon Personalizado SVG (Fundo vermelho, moto preta com baú) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='15' fill='%23D90429'/%3E%3Crect x='15' y='25' width='28' height='30' rx='3' fill='%23111111'/%3E%3Cpath d='M43 40 Q 55 35 60 45 L 75 45 L 80 65 L 70 65' stroke='%23111' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Cline x1='60' y1='45' x2='65' y2='30' stroke='%23111' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='65' cy='30' r='4' fill='%23111'/%3E%3Ccircle cx='30' cy='65' r='12' fill='none' stroke='%23111' stroke-width='6'/%3E%3Ccircle cx='70' cy='65' r='12' fill='none' stroke='%23111' stroke-width='6'/%3E%3Cline x1='30' y1='65' x2='70' y2='65' stroke='%23111' stroke-width='6'/%3E%3C/svg%3E">
-
-    <!-- Google Fonts: Montserrat para impacto corporativo, Inter para leitura -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Ícones -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Design System - Preto, Vermelho, Tecnologia e Tradição */
+        /* =========================================
+           VARIÁVEIS E RESET
+           ========================================= */
         :root {
-            --primary-red: #D90429;
-            --primary-hover: #EF233C;
-            --bg-black: #050505;
-            --bg-surface: #121212;
-            --bg-card: #1A1A1A;
-            --text-light: #F8F9FA;
-            --text-muted: #ADB5BD;
-            --border-color: #2B2B2B;
-            --transition: all 0.3s ease;
+            --bg-color: #1A1A1A;
+            --neon-cyan: #00F0FF;
+            --text-color: #F5F5F7;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
-        html { scroll-behavior: smooth; }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-black);
-            color: var(--text-light);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .brand-font {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            line-height: 1.2;
         }
 
-        a { text-decoration: none; color: inherit; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
+        /* =========================================
+           COMPONENTES GERAIS
+           ========================================= */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 5%;
+            padding: 0 24px;
         }
 
-        .section-padding { padding: 100px 0; }
-        .text-center { text-align: center; }
-        .text-red { color: var(--primary-red); }
+        .section-padding {
+            padding: 100px 0;
+        }
 
-        /* Botões */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 32px;
-            background-color: var(--primary-red);
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--neon-cyan);
+            font-family: var(--font-heading);
             font-weight: 700;
+            font-size: 1.1rem;
+            padding: 16px 32px;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border: none;
-            border-radius: 4px;
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: var(--transition);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
 
-        .btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(217, 4, 41, 0.3);
+        .btn-primary:hover {
+            background-color: var(--neon-cyan);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
         }
 
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary-red);
-            color: var(--primary-red);
+        .btn-pulse {
+            animation: pulse 2s infinite;
         }
 
-        .btn-outline:hover {
-            background-color: var(--primary-red);
-            color: #fff;
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 240, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
         }
 
-        /* Header Corporativo */
+        /* =========================================
+           HEADER & NAV
+           ========================================= */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(5, 5, 5, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            transition: var(--transition);
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 16px 0;
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 90px;
         }
 
         .logo {
             display: flex;
-            flex-direction: column;
-            line-height: 1;
+            align-items: center;
+            gap: 12px;
         }
 
-        .logo-main {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            font-weight: 900;
-            font-style: italic;
-            color: #fff;
-            letter-spacing: -1px;
+        .logo img {
+            height: 40px;
         }
 
-        .logo-sub {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--primary-red);
-            letter-spacing: 5px;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover { color: var(--primary-red); }
-
-        /* Hero Section (Foco em Conversão e Promessa Forte) */
+        /* =========================================
+           HERO SECTION
+           ========================================= */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.7) 100%), 
-                        url('https://images.unsplash.com/photo-1617347454431-f49d7ff5c3b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            text-align: center;
             position: relative;
-            padding-top: 90px;
         }
 
-        .hero-content {
-            max-width: 750px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .security-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: rgba(217, 4, 41, 0.1);
-            color: var(--primary-red);
-            padding: 8px 16px;
-            border: 1px solid var(--primary-red);
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,240,255,0.1) 0%, rgba(26,26,26,0) 70%);
+            z-index: -1;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--neon-cyan);
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
             max-width: 600px;
+            margin: 0 auto 40px;
+            color: #A0A0A0;
         }
 
-        /* Diferencial / Garantia (Seção Crucial) */
-        .guarantee-bar {
-            background-color: var(--primary-red);
-            padding: 40px 0;
-            border-top: 4px solid #fff;
-        }
-
-        .guarantee-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+        /* =========================================
+           COMO FUNCIONA
+           ========================================= */
+        .section-title {
             text-align: center;
-        }
-
-        .guarantee-item {
-            color: #fff;
-        }
-
-        .guarantee-item i {
             font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .guarantee-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .guarantee-item p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        /* Especialidades (O que levamos e o que não levamos) */
-        .specialties {
-            background-color: var(--bg-surface);
-            position: relative;
-        }
-
-        .section-header {
             margin-bottom: 60px;
         }
 
-        .section-header h2 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-        }
-
-        .spec-grid {
+        .steps-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
         }
 
-        .spec-card {
-            background-color: var(--bg-card);
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .spec-card:hover {
-            border-color: var(--primary-red);
-            transform: translateY(-5px);
-        }
-
-        .spec-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .spec-card ul {
-            list-style: none;
-        }
-
-        .spec-card ul li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        .spec-card ul li i.bx-check { color: #25D366; font-size: 1.5rem; }
-        .spec-card ul li i.bx-x { color: var(--primary-red); font-size: 1.5rem; }
-
-        /* Sobre Nós */
-        .about {
-            background-color: var(--bg-black);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 8px;
-            border-left: 5px solid var(--primary-red);
-            filter: grayscale(20%);
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            text-align: justify;
-        }
-
-        .highlight-box {
-            background-color: rgba(217, 4, 41, 0.05);
-            border-left: 4px solid var(--primary-red);
-            padding: 20px;
-            margin-top: 30px;
-        }
-
-        .highlight-box p {
-            color: #fff;
-            margin: 0;
-            font-weight: 600;
-            font-style: italic;
-        }
-
-        /* Trabalhe Conosco (Para Motoboys) */
-        .work-with-us {
-            background: linear-gradient(rgba(5,5,5,0.85), rgba(5,5,5,0.95)), url('https://images.unsplash.com/photo-1558981420-c532902e58b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-            padding: 100px 0;
+        .step-card {
             text-align: center;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
         }
 
-        .work-content {
-            max-width: 700px;
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+
+        .step-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--neon-cyan);
+            margin-bottom: 16px;
+            opacity: 0.8;
+        }
+
+        .step-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .step-card p {
+            color: #A0A0A0;
+        }
+
+        /* =========================================
+           PACOTES / PRECIFICAÇÃO
+           ========================================= */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .pricing-card {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: rgba(0, 240, 255, 0.5);
+            background: rgba(0, 240, 255, 0.02);
+            transform: scale(1.05);
+        }
+
+        .pricing-card h3 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--neon-cyan);
+            margin: 24px 0;
+        }
+
+        .price span {
+            font-size: 1.2rem;
+            color: #A0A0A0;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 32px 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            margin-bottom: 16px;
+            padding-left: 28px;
+            position: relative;
+            color: #D0D0D0;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--neon-cyan);
+            font-weight: bold;
+        }
+
+        /* =========================================
+           FAQ
+           ========================================= */
+        .faq-container {
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .work-content h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
+        .faq-item {
+            border-bottom: 1px solid var(--glass-border);
+            padding: 24px 0;
         }
 
-        .work-content p {
+        .faq-question {
+            font-family: var(--font-heading);
             font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-        }
-
-        /* Contato / Formulário */
-        .contact {
-            background-color: var(--bg-surface);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .contact-info h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-        }
-
-        .contact-methods {
+            font-weight: 700;
+            cursor: pointer;
             display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .method-item {
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
-            background-color: var(--bg-card);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+            transition: color 0.3s ease;
         }
 
-        .method-item i {
-            font-size: 2.5rem;
-            color: var(--primary-red);
+        .faq-question:hover {
+            color: var(--neon-cyan);
         }
 
-        .contact-form {
-            background-color: var(--bg-card);
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #A0A0A0;
+            margin-top: 0;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 16px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        .faq-item.active .faq-question {
+            color: var(--neon-cyan);
         }
 
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--bg-black);
-            border: 1px solid var(--border-color);
-            color: #fff;
-            border-radius: 4px;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--primary-red);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--bg-black);
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        footer p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 20px;
-        }
-
-        /* Botão Flutuante */
-        .wa-float {
+        /* =========================================
+           FAB (WHATSAPP FLUTUANTE)
+           ========================================= */
+        .fab-whatsapp {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #25D366;
-            color: #fff;
-            width: 65px;
-            height: 65px;
+            background-color: var(--neon-cyan);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);
             z-index: 1000;
-            transition: var(--transition);
+            transition: transform 0.3s ease;
+            text-decoration: none;
         }
 
-        .wa-float:hover {
+        .fab-whatsapp:hover {
             transform: scale(1.1);
-            background-color: #1EBE5D;
+            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.6);
         }
 
-        /* Animações Scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .fab-whatsapp svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--bg-color);
         }
 
-        /* --- PADRÃO AGÊNCIA: MENU MOBILE & RESPONSIVIDADE --- */
-        
-        /* Botão Hamburger */
-        .menu-btn {
-            display: none;
-            font-size: 2.2rem;
-            color: #fff;
-            cursor: pointer;
-            z-index: 1001; /* Fica acima do menu */
-            transition: var(--transition);
-        }
-
-        .menu-btn:hover { color: var(--primary-red); }
-
-        /* Overlay do Menu Mobile */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(5, 5, 5, 0.98);
-            backdrop-filter: blur(15px);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transform: translateX(100%);
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-            visibility: hidden;
-        }
-
-        .mobile-menu.active {
-            transform: translateX(0);
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-links {
-            list-style: none;
-            text-align: center;
-            padding: 0;
-            margin-bottom: 40px;
-        }
-
-        .mobile-links li { margin-bottom: 30px; }
-
-        .mobile-links a {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: var(--transition);
-        }
-
-        .mobile-links a:hover, .mobile-links a.active {
-            color: var(--primary-red);
-        }
-
-        /* Breakpoints (Responsividade Refinada) */
-        @media (max-width: 1024px) {
-            .nav-links { gap: 1.5rem; }
-            .hero h1 { font-size: 3.5rem; }
-        }
-
-        @media (max-width: 992px) {
-            .guarantee-grid { grid-template-columns: 1fr; gap: 40px; }
-            .spec-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
-            .about-image { margin-bottom: 30px; }
-            .section-padding { padding: 80px 0; }
-        }
-
+        /* =========================================
+           MEDIA QUERIES
+           ========================================= */
         @media (max-width: 768px) {
-            /* Navbar e Mobile Menu */
-            .nav-links, .nav-container > .btn { display: none; } 
-            .menu-btn { display: block; }
-            
-            /* Ajustes de Espaçamento e Tipografia para Mobile */
-            .section-padding { padding: 60px 0; }
-            .section-header h2 { font-size: 2.2rem; }
-            
-            /* Hero */
-            .hero { text-align: center; padding-top: 100px; }
-            .hero-content { margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.1rem; }
-            
-            /* Botões Full-Width (Melhor para Touch/Dedo) */
-            .hero > .container > .hero-content > div { flex-direction: column; width: 100%; }
-            .hero > .container > .hero-content > div > .btn { width: 100%; justify-content: center; }
-            
-            /* Ajustes Finos */
-            .contact-form { padding: 25px; }
-            .guarantee-item i { font-size: 3rem; }
-            .work-content h2 { font-size: 2rem; }
-            .work-content .btn { width: 100%; white-space: normal; text-align: center; height: auto; padding: 15px;}
+            .hero h1 { font-size: 2.5rem; }
+            .pricing-card.featured { transform: scale(1); }
+            .pricing-grid { gap: 24px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Corporativo -->
-    <header id="header">
+    <header>
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <span class="logo-main">DUAS RODAS</span>
-                <span class="logo-sub">Delivery</span>
-            </a>
-            
-            <!-- Navegação Desktop -->
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#diferencial">Garantia</a></li>
-                    <li><a href="#sobre">A Empresa</a></li>
-                    <li><a href="#trabalhe">Seja Parceiro</a></li>
-                </ul>
-            </nav>
-            <a href="#contato" class="btn" style="padding: 12px 24px; font-size: 0.8rem;">Fazer Cotação</a>
-            
-            <!-- Botão Hamburger Mobile -->
-            <div class="menu-btn" id="menuBtn">
-                <i class='bx bx-menu'></i>
+            <div class="logo">
+                <img src="01_Logo_Completa_Renderizada_Transparente_NeonCyan.png" alt="Ghost Web Logo">
             </div>
+            <a href="#planos" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Ver Pacotes</a>
         </div>
     </header>
 
-    <!-- Menu Overlay Mobile -->
-    <div class="mobile-menu" id="mobileMenu">
-        <ul class="mobile-links">
-            <li><a href="#inicio" class="mobile-link">Início</a></li>
-            <li><a href="#diferencial" class="mobile-link">Garantia</a></li>
-            <li><a href="#sobre" class="mobile-link">A Empresa</a></li>
-            <li><a href="#trabalhe" class="mobile-link">Seja Parceiro</a></li>
-        </ul>
-        <a href="#contato" class="btn mobile-link" style="width: 80%; max-width: 300px;">Fazer Cotação</a>
-    </div>
-
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
+    <section class="hero">
         <div class="container">
-            <div class="hero-content reveal">
-                <div class="security-badge">
-                    <i class='bx bx-check-shield'></i> GARANTIA INCONDICIONAL DE ENTREGA
+            <h1>Sua Empresa Online em <span>48 Horas</span>.</h1>
+            <p>Sem burocracia. Sem agências lentas. A Ghost Web foca no que importa: velocidade extrema, design premium e altíssima conversão.</p>
+            <a href="https://wa.me/5553981038992?text=Ol%C3%A1%21+Gostaria+de+iniciar+o+meu+projeto+em+48+horas+com+a+Ghost+Web." target="_blank" class="btn-primary btn-pulse">Quero meu projeto em 48h</a>
+        </div>
+    </section>
+
+    <section id="fluxo" class="section-padding" style="background: rgba(0,0,0,0.2);">
+        <div class="container">
+            <h2 class="section-title">Nossa Esteira Furtiva</h2>
+            <div class="steps-grid">
+                <div class="glass-panel step-card">
+                    <div class="step-number">01</div>
+                    <h3>Escolha o Design</h3>
+                    <p>Selecionamos a estrutura visual de maior conversão testada e validada especificamente para o seu nicho de mercado.</p>
                 </div>
-                <h1>Se chamou a <span class="text-red">Duas Rodas</span>, sua encomenda chega ao destino.</h1>
-                <p>Logística expressa com segurança absoluta. Nós não apenas transportamos sua mercadoria, nós assumimos o risco por ela.</p>
+                <div class="glass-panel step-card">
+                    <div class="step-number">02</div>
+                    <h3>Onboarding Rápido</h3>
+                    <p>Você preenche as informações vitais e o pitch de vendas do seu negócio em um formulário rápido de apenas 5 minutos.</p>
+                </div>
+                <div class="glass-panel step-card">
+                    <div class="step-number">03</div>
+                    <h3>Lançamento em 48h</h3>
+                    <p>Nossa equipe de engenharia assume o controle. O código é gerado, otimizado para performance e seu site vai para o ar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planos" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Sistemas Ativos</h2>
+            <div class="pricing-grid">
                 
-                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                    <!-- Substituir o número -->
-                    <a href="https://wa.me/5500000000000?text=Olá,%20gostaria%20de%20fazer%20uma%20cotação%20de%20entrega!" target="_blank" class="btn">
-                        <i class='bx bxl-whatsapp' style="font-size: 1.5rem;"></i> Chamar no WhatsApp
-                    </a>
-                    <a href="#contato" class="btn btn-outline">Cotação via E-mail</a>
+                <div class="glass-panel pricing-card">
+                    <h3>Stealth Page</h3>
+                    <p>Landing Page de Alta Conversão</p>
+                    <div class="price"><span>R$</span> 997</div>
+                    <ul class="features-list">
+                        <li>Entrega garantida em 48 horas</li>
+                        <li>Design Premium (Dark/Light Mode)</li>
+                        <li>Otimização Extrema de Velocidade</li>
+                        <li>Copywriting Estratégico Básico</li>
+                        <li>Botão de WhatsApp Fixo</li>
+                    </ul>
+                    <a href="https://wa.me/5553981038992?text=Ol%C3%A1%21+Gostaria+de+iniciar+o+meu+projeto+em+48+horas+com+a+Ghost+Web." target="_blank" class="btn-primary" style="width: 100%;">Contratar Agora</a>
                 </div>
+
+                <div class="glass-panel pricing-card featured">
+                    <h3>Ghost HQ</h3>
+                    <p>Site Institucional Completo</p>
+                    <div class="price"><span>R$</span> 1.997</div>
+                    <ul class="features-list">
+                        <li>Até 5 Páginas Estruturadas</li>
+                        <li>Design Premium e Exclusivo</li>
+                        <li>Painel de Integrações Avançadas</li>
+                        <li>Otimização SEO On-Page</li>
+                        <li>Hospedagem de Alta Performance Inclusa</li>
+                    </ul>
+                    <a href="https://wa.me/5553981038992?text=Ol%C3%A1%21+Gostaria+de+iniciar+o+meu+projeto+em+48+horas+com+a+Ghost+Web." target="_blank" class="btn-primary btn-pulse" style="width: 100%;">Contratar Agora</a>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- O Diferencial Forte (A Promessa) -->
-    <section id="diferencial" class="guarantee-bar">
-        <div class="container guarantee-grid reveal">
-            <div class="guarantee-item">
-                <i class='bx bx-package'></i>
-                <h3>Risco Zero</h3>
-                <p>Se danificarmos o produto por erro nosso, nós pagamos integralmente o valor.</p>
-            </div>
-            <div class="guarantee-item">
-                <i class='bx bx-radar'></i>
-                <h3>Garantia de Perda</h3>
-                <p>Em caso de perda ou extravio sob nossa responsabilidade, o ressarcimento é garantido.</p>
-            </div>
-            <div class="guarantee-item">
-                <i class='bx bx-stopwatch'></i>
-                <h3>Confiança Absoluta</h3>
-                <p>Agilidade e pontualidade. Tratamos a sua encomenda como se fosse nossa.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Especialidades (Filtro de Público) -->
-    <section class="specialties section-padding">
+    <section class="section-padding" style="background: rgba(0,0,0,0.2);">
         <div class="container">
-            <div class="section-header text-center reveal">
-                <h2>Nosso Foco de <span class="text-red">Atuação</span></h2>
-                <p>Especializados na logística B2B e E-commerce. Veja o que transportamos.</p>
-            </div>
-
-            <div class="spec-grid">
-                <!-- O que fazemos -->
-                <div class="spec-card reveal">
-                    <h3><i class='bx bx-check-circle' style="color: #25D366;"></i> O que Entregamos</h3>
-                    <ul>
-                        <li><i class='bx bx-check'></i> Produtos de E-commerce e Lojas Virtuais</li>
-                        <li><i class='bx bx-check'></i> Documentos e Malotes Corporativos</li>
-                        <li><i class='bx bx-check'></i> Autopeças e Equipamentos Eletrônicos</li>
-                        <li><i class='bx bx-check'></i> Alimentos Congelados (Embalagem adequada)</li>
-                        <li><i class='bx bx-check'></i> Encomendas em Geral (Caixas, sacolas)</li>
-                    </ul>
-                </div>
-
-                <!-- O que NÃO fazemos -->
-                <div class="spec-card reveal" style="transition-delay: 0.2s;">
-                    <h3><i class='bx bx-x-circle' style="color: var(--primary-red);"></i> O que NÃO Entregamos</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">Para mantermos nosso padrão de excelência e higiene nos baús, restringimos alguns itens:</p>
-                    <ul>
-                        <li><i class='bx bx-x'></i> Refeições Quentes (Marmitas, Lanches)</li>
-                        <li><i class='bx bx-x'></i> Confeitaria (Bolos decorados, Doces frágeis)</li>
-                        <li><i class='bx bx-x'></i> Produtos inflamáveis ou perigosos</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre Nós -->
-    <section id="sobre" class="about section-padding">
-        <div class="container about-grid">
-            <div class="about-image reveal">
-                <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Frota Duas Rodas Delivery">
-            </div>
-            <div class="about-text reveal">
-                <h2>Compromisso <span class="text-red">Inabalável</span></h2>
-                <p>No mercado de entregas, o maior medo de qualquer empresário é a dor de cabeça com clientes reclamando de pedidos atrasados ou danificados. A <strong>Duas Rodas Delivery</strong> nasceu para exterminar esse problema.</p>
-                <p>Nossa filosofia é simples: a satisfação do seu cliente final é a nossa prioridade. Criamos um ecossistema de entregas baseado em confiança e tecnologia, onde os nossos motoboys são treinados para representar a sua marca com o maior nível de profissionalismo.</p>
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="glass-panel faq-container">
                 
-                <div class="highlight-box">
-                    <p>"Não terceirize os seus problemas. Terceirize as suas entregas para uma empresa que assume a responsabilidade junto com você."</p>
+                <div class="faq-item">
+                    <div class="faq-question">Vocês realmente entregam em 48 horas? <span>+</span></div>
+                    <div class="faq-answer">Sim. Nosso processo é otimizado e livre de burocracias. A partir do momento que você preenche o onboarding com as informações do negócio, o relógio começa a rodar.</div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Trabalhe Conosco (Captação de Motoboys) -->
-    <section id="trabalhe" class="work-with-us reveal">
-        <div class="container work-content">
-            <h2>Faça parte da nossa <span class="text-red">Frota</span></h2>
-            <p>Se você é um profissional responsável, tem moto própria e busca uma parceria sólida, rentável e com muito volume de entregas, a Duas Rodas é o seu lugar.</p>
-            <!-- Link específico para RH/Cadastro -->
-            <a href="https://wa.me/5500000000000?text=Olá,%20quero%20ser%20um%20motoboy%20parceiro%20da%20Duas%20Rodas!" target="_blank" class="btn btn-outline" style="background-color: rgba(0,0,0,0.5); border-color: #fff; color: #fff;">
-                <i class='bx bx-id-card'></i> Quero ser um Entregador Parceiro
-            </a>
-        </div>
-    </section>
-
-    <!-- Contato e Formulário para Empresas -->
-    <section id="contato" class="contact section-padding">
-        <div class="container contact-grid">
-            <div class="contact-info reveal">
-                <h2>Pronto para <span class="text-red">Evoluir</span> a sua Logística?</h2>
-                <p>Preencha o formulário para receber uma cotação comercial, ou ligue diretamente para a nossa central de coletas urgentes.</p>
-
-                <div class="contact-methods">
-                    <div class="method-item">
-                        <i class='bx bxl-whatsapp'></i>
-                        <div>
-                            <h4 class="brand-font">Central de Coletas (WhatsApp)</h4>
-                            <span style="color: var(--text-muted); font-size: 1.1rem;">(00) 00000-0000</span>
-                        </div>
-                    </div>
-                    
-                    <div class="method-item">
-                        <i class='bx bx-envelope'></i>
-                        <div>
-                            <h4 class="brand-font">E-mail Comercial</h4>
-                            <span style="color: var(--text-muted); font-size: 1.1rem;">contato@duasrodasdelivery.com.br</span>
-                        </div>
-                    </div>
+                <div class="faq-item">
+                    <div class="faq-question">O valor cobrado possui alguma mensalidade? <span>+</span></div>
+                    <div class="faq-answer">O valor do desenvolvimento é único. Você arcará apenas com os custos anuais normais de domínio e hospedagem, que orientamos na entrega do projeto.</div>
                 </div>
-            </div>
 
-            <div class="contact-form reveal" style="transition-delay: 0.2s;">
-                <!-- Conectar com Formspree -->
-                <form action="https://formspree.io/f/seu_codigo_aqui" method="POST">
-                    <div class="form-group">
-                        <label>Sua Empresa / Nome</label>
-                        <input type="text" name="empresa" required placeholder="Ex: Loja de Roupas XYZ">
-                    </div>
-                    <div class="form-group">
-                        <label>WhatsApp ou Telefone</label>
-                        <input type="text" name="telefone" required placeholder="(DDD) 00000-0000">
-                    </div>
-                    <div class="form-group">
-                        <label>Tipo de Carga Padrão</label>
-                        <select name="tipo_carga" required>
-                            <option value="">Selecione o que você mais envia...</option>
-                            <option value="E-commerce">Caixas/Pacotes de E-commerce</option>
-                            <option value="Documentos">Documentos / Contratos</option>
-                            <option value="Autopeças">Autopeças</option>
-                            <option value="Congelados">Alimentos Congelados</option>
-                            <option value="Outros">Outros</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Volume Estimado e Região</label>
-                        <textarea name="detalhes" required placeholder="Ex: Preciso de 10 entregas diárias saindo do Centro para toda a cidade..."></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">Solicitar Cotação Corporativa</button>
-                </form>
+                <div class="faq-item">
+                    <div class="faq-question">Eu preciso ter o design pronto? <span>+</span></div>
+                    <div class="faq-answer">Não. Nossa engenharia de front-end já possui estruturas validadas para alta conversão. Nós adaptamos a interface para a identidade visual da sua marca.</div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="logo" style="align-items: center; margin-bottom: 15px;">
-                <span class="logo-main" style="font-size: 1.5rem;">DUAS RODAS</span>
-                <span class="logo-sub" style="font-size: 0.7rem;">Delivery</span>
-            </div>
-            <p style="margin-bottom: 5px;">&copy; 2026 Duas Rodas Delivery. Compromisso e Segurança. Todos os direitos reservados.</p>
-            <p style="margin-top: 0; font-size: 0.85rem;">Desenvolvido por <strong>Ghost Criatividade</strong></p>
-        </div>
-    </footer>
-
-    <!-- Botão WhatsApp Flutuante (Focado em Coletas) -->
-    <a href="https://wa.me/554797916049?text=Olá,%20acessei%20o%20site%20e%20preciso%20de%20uma%20coleta!" class="wa-float" target="_blank" title="Solicitar Coleta Rápida">
-        <i class='bx bxl-whatsapp'></i>
+    <a href="https://wa.me/5553981038992?text=Ol%C3%A1%21+Gostaria+de+iniciar+o+meu+projeto+em+48+horas+com+a+Ghost+Web." target="_blank" class="fab-whatsapp" aria-label="Fale conosco no WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
     </a>
 
-    <!-- Scripts -->
     <script>
+        // Lógica simples para o FAQ (Accordion)
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Padrão Agência: Lógica do Menu Mobile ---
-            const menuBtn = document.getElementById('menuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuIcon = menuBtn.querySelector('i');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-
-            function toggleMenu() {
-                mobileMenu.classList.toggle('active');
-                if (mobileMenu.classList.contains('active')) {
-                    menuIcon.classList.remove('bx-menu');
-                    menuIcon.classList.add('bx-x'); // Transforma em um "X"
-                    document.body.style.overflow = 'hidden'; // Evita scroll do fundo
-                } else {
-                    menuIcon.classList.remove('bx-x');
-                    menuIcon.classList.add('bx-menu');
-                    document.body.style.overflow = 'auto'; // Devolve o scroll
-                }
-            }
-
-            menuBtn.addEventListener('click', toggleMenu);
-
-            // Fechar menu ao clicar em qualquer link dele
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mobileMenu.classList.contains('active')) {
-                        toggleMenu();
-                    }
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Fecha outros abertos
+                    faqItems.forEach(otherItem => {
+                        if(otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-question span').textContent = '+';
+                        }
+                    });
+                    
+                    // Alterna o atual
+                    item.classList.toggle('active');
+                    const span = question.querySelector('span');
+                    span.textContent = item.classList.contains('active') ? '-' : '+';
                 });
-            });
-
-            // Header Scroll (Mantido do original)
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.8)';
-                } else {
-                    header.style.boxShadow = 'none';
-                }
-            });
-
-            // Scroll Reveal (Mantido do original)
-            const reveals = document.querySelectorAll('.reveal');
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); 
-                });
-            }, revealOptions);
-
-            reveals.forEach(reveal => {
-                revealOnScroll.observe(reveal);
             });
         });
     </script>
