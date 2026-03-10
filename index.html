@@ -3,502 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Web | Sites de Alta Conversão em 48h</title>
+    <title>Ghost Web | Agência Digital</title>
     
+    <!-- Importando as fontes do Google Fonts conforme o Manual -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* =========================================
-           VARIÁVEIS E RESET
-           ========================================= */
+        /* 3. PALETA DE CORES (SISTEMA STEALTH) */
         :root {
-            --bg-color: #1A1A1A;
-            --neon-cyan: #00F0FF;
-            --text-color: #F5F5F7;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --font-heading: 'Montserrat', sans-serif;
+            --eerie-black: #1A1A1A; /* Fundo Principal */
+            --neon-cyan: #00F0FF; /* Cor de Destaque / Conversão */
+            --off-white: #F5F5F7; /* Cor de Leitura */
+            
+            /* 4. TIPOGRAFIA */
+            --font-headings: 'Space Grotesk', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
 
+        /* Reset Básico */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--eerie-black);
+            color: var(--off-white);
             font-family: var(--font-body);
+            font-weight: 400;
             line-height: 1.6;
-            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         h1, h2, h3 {
-            font-family: var(--font-heading);
-            font-weight: 800;
+            font-family: var(--font-headings);
+            font-weight: 700;
             line-height: 1.2;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* =========================================
-           COMPONENTES GERAIS
-           ========================================= */
+        /* Container Principal */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 40px;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--neon-cyan);
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.1rem;
-            padding: 16px 32px;
-            border: 2px solid var(--neon-cyan);
-            border-radius: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--neon-cyan);
-            color: var(--bg-color);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
-        }
-
-        .btn-pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 240, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
-        }
-
-        /* =========================================
-           HEADER & NAV
-           ========================================= */
+        /* Header */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(26, 26, 26, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 16px 0;
-        }
-
-        .nav-container {
+            padding: 24px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            height: 40px; /* Altura sugerida para o logo horizontal */
         }
 
-        .logo img {
-            height: 40px;
+        /* Botões / CTAs */
+        .cta-button {
+            background-color: var(--neon-cyan);
+            color: var(--eerie-black); /* Contraste para leitura */
+            font-family: var(--font-headings);
+            font-weight: 700;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 8px; /* 5. DIRETRIZES VISUAIS (Cantos e Bordas) */
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
         }
 
-        /* =========================================
-           HERO SECTION
-           ========================================= */
+        .cta-button:hover {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .cta-button.small {
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+
+        /* Hero Section */
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
+            padding: 100px 0;
             text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0,240,255,0.1) 0%, rgba(26,26,26,0) 70%);
-            z-index: -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 24px;
+            font-size: 3.5rem;
+            max-width: 800px;
         }
 
-        .hero h1 span {
+        /* Destaque Neon Cyan nos títulos */
+        .highlight {
             color: var(--neon-cyan);
         }
 
         .hero p {
             font-size: 1.25rem;
             max-width: 600px;
-            margin: 0 auto 40px;
-            color: #A0A0A0;
+            color: rgba(245, 245, 247, 0.8); /* Off-white levemente opaco */
+            margin-bottom: 24px;
         }
 
-        /* =========================================
-           COMO FUNCIONA
-           ========================================= */
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
+        /* Seção de Soluções (Features) */
+        .features {
+            padding: 80px 0;
         }
 
-        .steps-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
+            margin-top: 48px;
         }
 
-        .step-card {
-            text-align: center;
+        /* 5. DIRETRIZES VISUAIS: Efeito Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px; /* Cantos levemente arredondados */
+            padding: 40px 32px;
             transition: transform 0.3s ease;
         }
 
-        .step-card:hover {
+        .glass-card:hover {
             transform: translateY(-5px);
             border-color: rgba(0, 240, 255, 0.3);
         }
 
-        .step-number {
-            font-family: var(--font-heading);
-            font-size: 3rem;
-            color: var(--neon-cyan);
-            margin-bottom: 16px;
-            opacity: 0.8;
-        }
-
-        .step-card h3 {
+        .glass-card h3 {
             font-size: 1.5rem;
             margin-bottom: 16px;
         }
 
-        .step-card p {
-            color: #A0A0A0;
+        .glass-card p {
+            font-size: 1rem;
+            color: rgba(245, 245, 247, 0.7);
         }
 
-        /* =========================================
-           PACOTES / PRECIFICAÇÃO
-           ========================================= */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            align-items: center;
-        }
-
-        .pricing-card {
+        /* Seção Final de Conversão */
+        .bottom-cta {
+            padding: 100px 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            background: radial-gradient(circle at center, rgba(0, 240, 255, 0.05) 0%, transparent 70%);
         }
 
-        .pricing-card:hover {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+        .bottom-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
         }
 
-        .pricing-card.featured {
-            border-color: rgba(0, 240, 255, 0.5);
-            background: rgba(0, 240, 255, 0.02);
-            transform: scale(1.05);
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.875rem;
+            color: rgba(245, 245, 247, 0.5);
         }
 
-        .pricing-card h3 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .price {
-            font-family: var(--font-heading);
-            font-size: 3.5rem;
-            color: var(--neon-cyan);
-            margin: 24px 0;
-        }
-
-        .price span {
-            font-size: 1.2rem;
-            color: #A0A0A0;
-        }
-
-        .features-list {
-            list-style: none;
-            margin: 32px 0;
-            text-align: left;
-        }
-
-        .features-list li {
-            margin-bottom: 16px;
-            padding-left: 28px;
-            position: relative;
-            color: #D0D0D0;
-        }
-
-        .features-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--neon-cyan);
-            font-weight: bold;
-        }
-
-        /* =========================================
-           FAQ
-           ========================================= */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--glass-border);
-            padding: 24px 0;
-        }
-
-        .faq-question {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: color 0.3s ease;
-        }
-
-        .faq-question:hover {
-            color: var(--neon-cyan);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            color: #A0A0A0;
-            margin-top: 0;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            margin-top: 16px;
-        }
-
-        .faq-item.active .faq-question {
-            color: var(--neon-cyan);
-        }
-
-        /* =========================================
-           FAB (WHATSAPP FLUTUANTE)
-           ========================================= */
-        .fab-whatsapp {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--neon-cyan);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);
-            z-index: 1000;
-            transition: transform 0.3s ease;
-            text-decoration: none;
-        }
-
-        .fab-whatsapp:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.6);
-        }
-
-        .fab-whatsapp svg {
-            width: 32px;
-            height: 32px;
-            fill: var(--bg-color);
-        }
-
-        /* =========================================
-           MEDIA QUERIES
-           ========================================= */
+        /* Responsividade */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .pricing-card.featured { transform: scale(1); }
-            .pricing-grid { gap: 24px; }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .bottom-cta h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <img src="01_Logo_Completa_Renderizada_Transparente_NeonCyan.png" alt="Ghost Web Logo">
-            </div>
-            <a href="#planos" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Ver Pacotes</a>
-        </div>
-    </header>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <!-- Substitua o 'src' pelo arquivo do Logotipo Horizontal -->
+            <img src="logo-horizontal.png" alt="Ghost Web" class="logo">
+            <a href="#contato" class="cta-button small">Iniciar Projeto</a>
+        </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Sua Empresa Online em <span>48 Horas</span>.</h1>
-            <p>Sem burocracia. Sem agências lentas. A Ghost Web foca no que importa: velocidade extrema, design premium e altíssima conversão.</p>
-            <a href="https://wa.me/5553981038992?text=Ol%C3%A1%21+Gostaria+de+iniciar+o+meu+projeto+em+48+horas+com+a+Ghost+Web." target="_blank" class="btn-primary btn-pulse">Quero meu projeto em 48h</a>
-        </div>
-    </section>
+        <!-- HERO SECTION (Promessa Principal) -->
+        <section class="hero">
+            <h1>Sua presença de elite no ar em <span class="highlight">48 horas.</span></h1>
+            <p>Nós cuidamos da tecnologia complexa em silêncio. Você recebe um resultado cirúrgico, rápido e pronto para gerar negócios, sem burocracia.</p>
+            <a href="#contato" class="cta-button">Quero Resultados Agora</a>
+        </section>
 
-    <section id="fluxo" class="section-padding" style="background: rgba(0,0,0,0.2);">
-        <div class="container">
-            <h2 class="section-title">Nossa Esteira Furtiva</h2>
-            <div class="steps-grid">
-                <div class="glass-panel step-card">
-                    <div class="step-number">01</div>
-                    <h3>Escolha o Design</h3>
-                    <p>Selecionamos a estrutura visual de maior conversão testada e validada especificamente para o seu nicho de mercado.</p>
-                </div>
-                <div class="glass-panel step-card">
-                    <div class="step-number">02</div>
-                    <h3>Onboarding Rápido</h3>
-                    <p>Você preenche as informações vitais e o pitch de vendas do seu negócio em um formulário rápido de apenas 5 minutos.</p>
-                </div>
-                <div class="glass-panel step-card">
-                    <div class="step-number">03</div>
-                    <h3>Lançamento em 48h</h3>
-                    <p>Nossa equipe de engenharia assume o controle. O código é gerado, otimizado para performance e seu site vai para o ar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="planos" class="section-padding">
-        <div class="container">
-            <h2 class="section-title">Sistemas Ativos</h2>
-            <div class="pricing-grid">
-                
-                <div class="glass-panel pricing-card">
-                    <h3>Stealth Page</h3>
-                    <p>Landing Page de Alta Conversão</p>
-                    <div class="price"><span>R$</span> 997</div>
-                    <ul class="features-list">
-                        <li>Entrega garantida em 48 horas</li>
-                        <li>Design Premium (Dark/Light Mode)</li>
-                        <li>Otimização Extrema de Velocidade</li>
-                        <li>Copywriting Estratégico Básico</li>
-                        <li>Botão de WhatsApp Fixo</li>
-                    </ul>
-                    <a href="https://wa.me/5553981038992?text=Ol%C3%A1%21+Gostaria+de+iniciar+o+meu+projeto+em+48+horas+com+a+Ghost+Web." target="_blank" class="btn-primary" style="width: 100%;">Contratar Agora</a>
-                </div>
-
-                <div class="glass-panel pricing-card featured">
-                    <h3>Ghost HQ</h3>
-                    <p>Site Institucional Completo</p>
-                    <div class="price"><span>R$</span> 1.997</div>
-                    <ul class="features-list">
-                        <li>Até 5 Páginas Estruturadas</li>
-                        <li>Design Premium e Exclusivo</li>
-                        <li>Painel de Integrações Avançadas</li>
-                        <li>Otimização SEO On-Page</li>
-                        <li>Hospedagem de Alta Performance Inclusa</li>
-                    </ul>
-                    <a href="https://wa.me/5553981038992?text=Ol%C3%A1%21+Gostaria+de+iniciar+o+meu+projeto+em+48+horas+com+a+Ghost+Web." target="_blank" class="btn-primary btn-pulse" style="width: 100%;">Contratar Agora</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding" style="background: rgba(0,0,0,0.2);">
-        <div class="container">
-            <h2 class="section-title">Perguntas Frequentes</h2>
-            <div class="glass-panel faq-container">
-                
-                <div class="faq-item">
-                    <div class="faq-question">Vocês realmente entregam em 48 horas? <span>+</span></div>
-                    <div class="faq-answer">Sim. Nosso processo é otimizado e livre de burocracias. A partir do momento que você preenche o onboarding com as informações do negócio, o relógio começa a rodar.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">O valor cobrado possui alguma mensalidade? <span>+</span></div>
-                    <div class="faq-answer">O valor do desenvolvimento é único. Você arcará apenas com os custos anuais normais de domínio e hospedagem, que orientamos na entrega do projeto.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Eu preciso ter o design pronto? <span>+</span></div>
-                    <div class="faq-answer">Não. Nossa engenharia de front-end já possui estruturas validadas para alta conversão. Nós adaptamos a interface para a identidade visual da sua marca.</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <a href="https://wa.me/5553981038992?text=Ol%C3%A1%21+Gostaria+de+iniciar+o+meu+projeto+em+48+horas+com+a+Ghost+Web." target="_blank" class="fab-whatsapp" aria-label="Fale conosco no WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-        </svg>
-    </a>
-
-    <script>
-        // Lógica simples para o FAQ (Accordion)
-        document.addEventListener('DOMContentLoaded', () => {
-            const faqItems = document.querySelectorAll('.faq-item');
+        <!-- CARDS COM GLASSMORPHISM (Benefícios sem jargões) -->
+        <section class="features">
+            <h2 style="text-align: center; font-size: 2rem;">Operação Furtiva. <span class="highlight">Resultados Reais.</span></h2>
             
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    // Fecha outros abertos
-                    faqItems.forEach(otherItem => {
-                        if(otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                            otherItem.querySelector('.faq-question span').textContent = '+';
-                        }
-                    });
-                    
-                    // Alterna o atual
-                    item.classList.toggle('active');
-                    const span = question.querySelector('span');
-                    span.textContent = item.classList.contains('active') ? '-' : '+';
-                });
-            });
-        });
-    </script>
+            <div class="features-grid">
+                <!-- Card 1 -->
+                <div class="glass-card">
+                    <h3>Velocidade Absoluta</h3>
+                    <p>Enquanto o mercado pede meses, nós pedimos horas. Sua máquina de vendas construída e entregue em tempo recorde, para você não perder oportunidades.</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="glass-card">
+                    <h3>Foco no Seu Negócio</h3>
+                    <p>Sem jargões, sem reuniões inúteis. Nossa agência resolve o problema de forma invisível para que você possa focar no que importa: atender seus clientes.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card">
+                    <h3>Conversão Cirúrgica</h3>
+                    <p>Não fazemos apenas sites bonitos. Criamos ambientes profissionais de alto contraste desenhados exclusivamente para transformar visitantes em compradores.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM CTA (Chamada Final) -->
+        <section class="bottom-cta" id="contato">
+            <h2>Pronto para assumir a <span class="highlight">linha de frente?</span></h2>
+            <p style="margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Dê o próximo passo. Acione a Ghost Web e tenha sua estrutura digital pronta em 48h.</p>
+            <a href="https://wa.me/SEUNUMERO" target="_blank" class="cta-button">Falar com a Equipe</a>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ghost Web Agência Digital. Todos os direitos reservados. Operação Furtiva.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
