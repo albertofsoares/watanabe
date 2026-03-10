@@ -3,246 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Web | Agência Digital</title>
+    <title>Ghost Web | Agência Digital Furtiva</title>
     
-    <!-- Importando as fontes do Google Fonts conforme o Manual -->
+    <!-- FAVICON: Aqui entra o anexo do Ícone (apenas o fantasma) -->
+    <link rel="icon" type="image/png" href="icone-fantasma.png">
+
+    <!-- Tipografia da Engenharia (Manual da Marca) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* 3. PALETA DE CORES (SISTEMA STEALTH) */
+        /* =========================================
+           1. SISTEMA DE CORES E VARIÁVEIS (STEALTH)
+           ========================================= */
         :root {
-            --eerie-black: #1A1A1A; /* Fundo Principal */
-            --neon-cyan: #00F0FF; /* Cor de Destaque / Conversão */
-            --off-white: #F5F5F7; /* Cor de Leitura */
+            --bg-dark: #1A1A1A;
+            --neon-cyan: #00F0FF;
+            --off-white: #F5F5F7;
+            --text-muted: rgba(245, 245, 247, 0.6);
             
-            /* 4. TIPOGRAFIA */
-            --font-headings: 'Space Grotesk', sans-serif;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --glass-border-hover: rgba(0, 240, 255, 0.3);
+            
+            --font-title: 'Space Grotesk', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
 
-        /* Reset Básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* =========================================
+           2. RESET E BASE
+           ========================================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
         body {
-            background-color: var(--eerie-black);
+            background-color: var(--bg-dark);
             color: var(--off-white);
             font-family: var(--font-body);
-            font-weight: 400;
             line-height: 1.6;
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3 {
-            font-family: var(--font-headings);
+        h1, h2, h3 { font-family: var(--font-title); font-weight: 700; line-height: 1.1; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Destaque Neon com Efeito de Brilho (Glow) */
+        .neon-text {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+        }
+
+        /* =========================================
+           3. COMPONENTES (UI & GLASSMORPHISM)
+           ========================================= */
+        /* Botão de Conversão Cirúrgico */
+        .btn {
+            background-color: var(--neon-cyan);
+            color: var(--bg-dark);
+            font-family: var(--font-title);
             font-weight: 700;
-            line-height: 1.2;
+            font-size: 1.125rem;
+            padding: 16px 36px;
+            border-radius: 8px; /* Diretriz de cantos */
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
         }
 
-        /* Container Principal */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 240, 255, 0.5);
         }
 
-        /* Header */
+        /* Menu de Navegação */
         header {
-            padding: 24px 0;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(12px); /* Glassmorphism */
+            border-bottom: 1px solid var(--glass-border);
+            padding: 16px 0;
+        }
+
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            height: 40px; /* Altura sugerida para o logo horizontal */
-        }
+        .logo-header { height: 32px; object-fit: contain; }
 
-        /* Botões / CTAs */
-        .cta-button {
-            background-color: var(--neon-cyan);
-            color: var(--eerie-black); /* Contraste para leitura */
-            font-family: var(--font-headings);
-            font-weight: 700;
-            text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 8px; /* 5. DIRETRIZES VISUAIS (Cantos e Bordas) */
-            display: inline-block;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-
-        .cta-button:hover {
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .cta-button.small {
-            padding: 12px 24px;
-            font-size: 1rem;
-        }
-
-        /* Hero Section */
+        /* =========================================
+           4. SEÇÕES DA LANDING PAGE
+           ========================================= */
+        /* Hero Section (Primeira Impressão) */
         .hero {
-            padding: 100px 0;
-            text-align: center;
+            position: relative;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 24px;
+            padding-top: 80px;
+            overflow: hidden;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        /* Brilho de fundo (Efeito Espectral) */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 40%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw; height: 80vw;
+            max-width: 800px; max-height: 800px;
+            background: radial-gradient(circle, rgba(0,240,255,0.08) 0%, transparent 60%);
+            z-index: -1;
+        }
+
+        .hero-content {
             max-width: 800px;
+            animation: fadeUp 1s ease-out forwards;
         }
 
-        /* Destaque Neon Cyan nos títulos */
-        .highlight {
-            color: var(--neon-cyan);
-        }
+        .hero h1 { font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 24px; letter-spacing: -0.02em; }
+        .hero p { font-size: clamp(1.125rem, 2vw, 1.25rem); color: var(--text-muted); margin-bottom: 40px; max-width: 650px; }
 
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 600px;
-            color: rgba(245, 245, 247, 0.8); /* Off-white levemente opaco */
-            margin-bottom: 24px;
-        }
+        /* Serviços / Pacotes (Ghost HQ & Stealth Page) */
+        .services { padding: 120px 0; position: relative; }
+        
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 16px; }
+        .section-header p { color: var(--text-muted); font-size: 1.125rem; }
 
-        /* Seção de Soluções (Features) */
-        .features {
-            padding: 80px 0;
-        }
-
-        .features-grid {
+        .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 32px;
-            margin-top: 48px;
         }
 
-        /* 5. DIRETRIZES VISUAIS: Efeito Glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 8px; /* Cantos levemente arredondados */
-            padding: 40px 32px;
-            transition: transform 0.3s ease;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 48px 32px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--neon-cyan);
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
         }
 
         .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 240, 255, 0.3);
+            transform: translateY(-8px);
+            border-color: var(--glass-border-hover);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .glass-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-        }
+        .glass-card:hover::before { transform: scaleX(1); }
+        .glass-card h3 { font-size: 1.75rem; margin-bottom: 16px; color: var(--off-white); }
+        .glass-card p { color: var(--text-muted); margin-bottom: 24px; font-size: 1rem; }
 
-        .glass-card p {
-            font-size: 1rem;
-            color: rgba(245, 245, 247, 0.7);
-        }
+        /* Lista de benefícios nos cards */
+        .feature-list { list-style: none; }
+        .feature-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--off-white); font-size: 0.95rem; }
+        .feature-list li::before { content: '→'; color: var(--neon-cyan); font-family: var(--font-title); font-weight: bold; }
 
-        /* Seção Final de Conversão */
-        .bottom-cta {
+        /* Banner de Conversão Final */
+        .cta-section {
             padding: 100px 0;
             text-align: center;
-            background: radial-gradient(circle at center, rgba(0, 240, 255, 0.05) 0%, transparent 70%);
+            background: linear-gradient(180deg, transparent 0%, rgba(0,240,255,0.03) 100%);
+            border-top: 1px solid var(--glass-border);
         }
 
-        .bottom-cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 24px;
-        }
+        .cta-section h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 24px; }
+        .cta-section p { color: var(--text-muted); font-size: 1.25rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
 
-        /* Footer */
+        /* Footer Furtivo */
         footer {
             padding: 40px 0;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255,255,255,0.03);
+            color: rgba(245, 245, 247, 0.3);
             font-size: 0.875rem;
-            color: rgba(245, 245, 247, 0.5);
         }
 
-        /* Responsividade */
+        /* =========================================
+           5. ANIMAÇÕES & RESPONSIVO
+           ========================================= */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            .bottom-cta h2 {
-                font-size: 2rem;
-            }
+            .hero { text-align: center; padding-top: 120px; }
+            .hero-content { margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+            .grid-cards { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- HEADER -->
-        <header>
-            <!-- Substitua o 'src' pelo arquivo do Logotipo Horizontal -->
-            <img src="logo-horizontal.png" alt="Ghost Web" class="logo">
-            <a href="#contato" class="cta-button small">Iniciar Projeto</a>
-        </header>
-
-        <!-- HERO SECTION (Promessa Principal) -->
-        <section class="hero">
-            <h1>Sua presença de elite no ar em <span class="highlight">48 horas.</span></h1>
-            <p>Nós cuidamos da tecnologia complexa em silêncio. Você recebe um resultado cirúrgico, rápido e pronto para gerar negócios, sem burocracia.</p>
-            <a href="#contato" class="cta-button">Quero Resultados Agora</a>
-        </section>
-
-        <!-- CARDS COM GLASSMORPHISM (Benefícios sem jargões) -->
-        <section class="features">
-            <h2 style="text-align: center; font-size: 2rem;">Operação Furtiva. <span class="highlight">Resultados Reais.</span></h2>
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="container nav-content">
+            <!-- ANEXO: Logotipo Horizontal -->
+            <img src="logo-horizontal.png" alt="Ghost Web Agência Digital" class="logo-header">
             
-            <div class="features-grid">
-                <!-- Card 1 -->
+            <a href="#operacao" class="btn" style="padding: 10px 24px; font-size: 0.95rem;">Iniciar Projeto</a>
+        </div>
+    </header>
+
+    <!-- SEÇÃO HERO (Linha de frente) -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sua operação digital no ar em <span class="neon-text">48 horas.</span></h1>
+                <p>Nós cuidamos da engenharia complexa em silêncio. Você recebe um resultado cirúrgico, rápido e altamente profissional. Sem burocracia e sem jargões.</p>
+                <a href="#operacao" class="btn">Quero Resultados Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE PACOTES / SERVIÇOS (Conforme Manual: Stealth Page e Ghost HQ) -->
+    <section class="services" id="solucoes">
+        <div class="container">
+            <div class="section-header">
+                <h2>Engenharia <span class="neon-text">Invisível</span>.</h2>
+                <p>Nossas soluções entregam tecnologia de elite direto ao ponto.</p>
+            </div>
+
+            <div class="grid-cards">
+                <!-- Pacote 1 -->
                 <div class="glass-card">
-                    <h3>Velocidade Absoluta</h3>
-                    <p>Enquanto o mercado pede meses, nós pedimos horas. Sua máquina de vendas construída e entregue em tempo recorde, para você não perder oportunidades.</p>
-                </div>
-                
-                <!-- Card 2 -->
-                <div class="glass-card">
-                    <h3>Foco no Seu Negócio</h3>
-                    <p>Sem jargões, sem reuniões inúteis. Nossa agência resolve o problema de forma invisível para que você possa focar no que importa: atender seus clientes.</p>
+                    <h3>Stealth Page</h3>
+                    <p>Uma Landing Page cirúrgica desenhada exclusivamente para converter visitantes em clientes de forma rápida e letal.</p>
+                    <ul class="feature-list">
+                        <li>Entrega expressa em 48h</li>
+                        <li>Design de alto contraste</li>
+                        <li>Foco em velocidade de carregamento</li>
+                        <li>Botões de ação estratégicos</li>
+                    </ul>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Pacote 2 -->
                 <div class="glass-card">
-                    <h3>Conversão Cirúrgica</h3>
-                    <p>Não fazemos apenas sites bonitos. Criamos ambientes profissionais de alto contraste desenhados exclusivamente para transformar visitantes em compradores.</p>
+                    <h3>Ghost HQ</h3>
+                    <p>O quartel-general da sua empresa na internet. Um site institucional completo que reflete autoridade e confiança.</p>
+                    <ul class="feature-list">
+                        <li>Estrutura robusta e moderna</li>
+                        <li>Múltiplas páginas otimizadas</li>
+                        <li>Integração com WhatsApp</li>
+                        <li>Design Responsivo de Elite</li>
+                    </ul>
+                </div>
+
+                <!-- Diferencial -->
+                <div class="glass-card">
+                    <h3 class="neon-text">Operação Furtiva</h3>
+                    <p>Você foca no seu negócio enquanto nós atuamos nos bastidores. Nossa comunicação vai direto ao resultado comercial.</p>
+                    <ul class="feature-list">
+                        <li>Sem reuniões inúteis</li>
+                        <li>Sem jargões técnicos confusos</li>
+                        <li>Suporte rápido e silencioso</li>
+                        <li>Alta performance garantida</li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- BOTTOM CTA (Chamada Final) -->
-        <section class="bottom-cta" id="contato">
-            <h2>Pronto para assumir a <span class="highlight">linha de frente?</span></h2>
-            <p style="margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Dê o próximo passo. Acione a Ghost Web e tenha sua estrutura digital pronta em 48h.</p>
-            <a href="https://wa.me/SEUNUMERO" target="_blank" class="cta-button">Falar com a Equipe</a>
-        </section>
-    </div>
+    <!-- CTA FINAL (Conversão Direta) -->
+    <section class="cta-section" id="operacao">
+        <div class="container">
+            <h2>Pronto para assumir a <span class="neon-text">linha de frente?</span></h2>
+            <p>Deixe a engenharia conosco. Acione a equipe da Ghost Web e tenha sua estrutura rodando com velocidade e precisão.</p>
+            
+            <!-- Substitua "SEUNUMERO" pelo número do WhatsApp da agência -->
+            <a href="https://wa.me/5511999999999?text=Olá, quero iniciar uma operação com a Ghost Web." target="_blank" class="btn">Acionar Equipe no WhatsApp</a>
+        </div>
+    </section>
 
-    <!-- FOOTER -->
+    <!-- RODAPÉ -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Ghost Web Agência Digital. Todos os direitos reservados. Operação Furtiva.</p>
+            <p>&copy; 2026 Ghost Web Agência Digital. Todos os direitos reservados. Operação Stealth.</p>
         </div>
     </footer>
 
